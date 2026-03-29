@@ -1,0 +1,67 @@
+import os
+import time
+import webbrowser
+import urllib.parse
+import pyautogui
+from flask import Flask, render_template, request, jsonify
+
+# Configuração de Ambiente
+os.environ['DISPLAY'] = ':0' 
+pyautogui.FAILSAFE = True 
+
+app = Flask(__name__)
+
+# ========================================================
+# 🧪 CONFIGURAÇÃO DE TESTE
+# ========================================================
+MEU_NUMERO_DE_TESTE = "5521979932621"
+# ========================================================
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/buscar', methods=['POST'])
+def buscar():
+    lead_simulado = [{"Nome": "WAGNER (TESTE)", "WhatsApp": MEU_NUMERO_DE_TESTE}]
+    return jsonify(lead_simulado)
+
+@app.route('/disparar', methods=['POST'])
+def disparar():
+    dados = request.json
+    mensagem_base = dados['mensagem']
+    
+    addLog_python(f"Iniciando ciclo de teste para: {MEU_NUMERO_DE_TESTE}")
+    
+    # 1. Montagem do Link
+    texto_formatado = f"*[MODO TESTE - ENGENHARIA]*\n{mensagem_base.replace('{empresa}', 'WAGNER TESTE')}"
+    texto_final = urllib.parse.quote(texto_formatado)
+    link_api = f"https://web.whatsapp.com/send?phone={MEU_NUMERO_DE_TESTE}&text={texto_final}"
+    
+    # 2. Abertura do Navegador
+    webbrowser.open(link_api)
+    
+    # 3. Espera de carregamento (Aumentada para 25s para garantir)
+    addLog_python("Aguardando 25 segundos para carregamento total...")
+    time.sleep(25) 
+
+    # 4. TÉCNICA DE FOCO: Clica no centro da tela para ativar a janela
+    largura, altura = pyautogui.size()
+    pyautogui.click(largura / 2, altura / 2)
+    time.sleep(1) # Pausa curta após o clique
+
+    # 5. ENVIO AUTOMÁTICO
+    pyautogui.press('enter')
+    addLog_python("Comando 'Enter' disparado.")
+
+    # 6. DELAY DE SEGURANÇA (Para evitar bloqueio na API/Web)
+    addLog_python("Iniciando delay de segurança de 30 segundos...")
+    time.sleep(30) 
+
+    return jsonify({"status": "Envio processado. Verifique o celular."})
+
+def addLog_python(m):
+    print(f"{time.strftime('%H:%M:%S')} | {m}")
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000, threaded=False)
