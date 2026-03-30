@@ -6,145 +6,49 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
-        :root { 
-            --neon-cyan: #00f2ff; 
-            --glow-blue: rgba(0, 242, 255, 0.4);
-            --bg-dark: #020508;
-            --card-bg: rgba(6, 18, 26, 0.85);
+        :root { --eng-orange: #ff5500; --carbon: #121212; }
+        body { background-color: var(--carbon); color: #e0e0e0; font-family: 'Inter', sans-serif; }
+        .eng-card { background: #1a1a1a; border: 1px solid #333; border-top: 4px solid var(--eng-orange); padding: 25px; border-radius: 4px; }
+        .label-tech { color: var(--eng-orange); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; }
+        .form-control { background: #252525; border: 1px solid #444; color: #fff; }
+        .btn-eng { background: var(--eng-orange); color: #000; font-weight: 700; width: 100%; padding: 12px; border: none; }
+        .btn-send { background: #25d366; color: #000; font-weight: 700; width: 100%; padding: 12px; border: none; }
+        #log-console { background: #000; height: 120px; overflow-y: auto; padding: 15px; font-family: monospace; color: #00ff41; border: 1px solid #333; }
+        .table { color: #ccc; }
+        
+        /* Estilo do Rodapé */
+        .footer-wf { 
+            text-align: center; 
+            padding: 40px 0; 
+            border-top: 1px solid #333; 
+            margin-top: 50px; 
+            color: #888;
         }
-
-        body { 
-            background: radial-gradient(circle at center, #0a1f2d 0%, var(--bg-dark) 80%);
-            background-color: var(--bg-dark);
-            color: #e0e0e0; 
-            font-family: 'Segoe UI', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .eng-card { 
-            background: var(--card-bg); 
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(0, 242, 255, 0.15);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            padding: 30px; 
-            border-radius: 20px; 
-            transition: 0.3s ease-in-out;
-        }
-
-        .eng-card:hover {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 25px 60px rgba(0, 242, 255, 0.15);
-        }
-
-        .label-tech { 
-            color: var(--neon-cyan); 
-            font-size: 0.75rem; 
-            font-weight: 800; 
-            letter-spacing: 2px;
-            text-transform: uppercase; 
-            margin-bottom: 8px;
-            display: block;
-            text-shadow: 0 0 10px var(--glow-blue);
-        }
-
-        /* CONFIGURAÇÃO DO PLACEHOLDER E SOMBREADO INTERNO */
-        .form-control, .form-select { 
-            background-color: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            color: #ffffff; 
-            border-radius: 8px;
-            padding: 12px;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /* Sombreado Interno Solicitado */
-        }
-
-        .form-control:focus, .form-select:focus {
-            background-color: rgba(0, 242, 255, 0.05);
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 15px var(--glow-blue), inset 0 0 5px rgba(0, 242, 255, 0.2);
-            color: #ffffff;
-            outline: none;
-        }
-
-        /* TEXTO DE EXEMPLO (PLACEHOLDER) VISÍVEL E SUAVE */
-        ::placeholder {
-            color: rgba(255, 255, 255, 0.3); /* Texto suave/cinza */
-            font-style: italic;
-        }
-
-        select option {
-            background-color: #0a1f2d;
-            color: #ffffff;
-        }
-
-        .btn-eng { 
-            background: linear-gradient(135deg, #008894 0%, #00404a 100%);
-            color: #fff; font-weight: 800; width: 100%; padding: 15px; 
-            border: 1px solid var(--neon-cyan); border-radius: 10px;
-            text-transform: uppercase; letter-spacing: 2px;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-
-        .btn-eng:hover {
-            background: var(--neon-cyan);
-            color: #000;
-            box-shadow: 0 0 30px var(--neon-cyan);
-        }
-
-        #log-console { 
-            background: #000; height: 120px; overflow-y: auto; padding: 15px; 
-            font-family: 'Consolas', monospace; color: #00ff41; 
-            border: 1px solid #1a1a1a; border-radius: 8px; font-size: 0.8rem;
-        }
-
-        .footer-wf {
-            text-align: center; padding: 40px 0; border-top: 1px solid rgba(0, 242, 255, 0.1);
-            margin-top: 50px; color: rgba(255,255,255,0.6);
-        }
-        .footer-wf b { color: var(--neon-cyan); }
+        .footer-wf b { color: var(--eng-orange); }
     </style>
 </head>
 <body>
 
-<div class="container py-5">
-    <div class="row g-5">
-        <div class="col-md-5">
+<div class="container-fluid py-5">
+    <div class="row g-4">
+        <div class="col-md-4">
             <div class="eng-card">
-                <h4 class="mb-4 text-white"><i class="bi bi-geo-alt-fill me-2 text-info"></i> CONFIGURAÇÃO</h4>
-                
+                <h5 class="mb-4 text-white"><i class="bi bi-gear-fill me-2 text-warning"></i>CONFIGURAÇÃO</h5>
                 <div class="mb-3">
                     <label class="label-tech">Segmento / Nicho</label>
-                    <input type="text" id="nicho" class="form-control" 
-                           placeholder="Ex: Restaurante, Farmácia, Metalúrgica...">
+                    <input type="text" id="nicho" class="form-control" value="Restaurante">
                 </div>
-
                 <div class="mb-3">
-                    <label class="label-tech">Selecione o Estado (UF)</label>
-                    <select id="estado" class="form-select" onchange="atualizarCidades()">
-                        <option value="">Selecione o Estado</option>
-                        <option value="AC">Acre</option><option value="AL">Alagoas</option><option value="AP">Amapá</option><option value="AM">Amazonas</option><option value="BA">Bahia</option><option value="CE">Ceará</option><option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option><option value="GO">Goiás</option><option value="MA">Maranhão</option><option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option><option value="MG">Minas Gerais</option><option value="PA">Pará</option><option value="PB">Paraíba</option><option value="PR">Paraná</option><option value="PE">Pernambuco</option><option value="PI">Piauí</option><option value="RJ" selected>Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option><option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option><option value="RR">Roraima</option><option value="SC">Santa Catarina</option><option value="SP">São Paulo</option><option value="SE">Sergipe</option><option value="TO">Tocantins</option>
-                    </select>
+                    <label class="label-tech">Localização</label>
+                    <input type="text" id="localidade" class="form-control" value="Barra Mansa, RJ">
                 </div>
-                
                 <div class="mb-3">
-                    <label class="label-tech">Selecione a Cidade</label>
-                    <select id="localidade" class="form-select">
-                        <option value="">Escolha o Estado...</option>
-                    </select>
+                    <label class="label-tech">Mensagem ({empresa})</label>
+                    <textarea id="mensagem" class="form-control" rows="3">Olá! Verifiquei que a {empresa} pode otimizar processos com suporte em PMOC.</textarea>
                 </div>
-
-                <div class="mb-3">
-                    <label class="label-tech">Mensagem de Abordagem</label>
-                    <textarea id="mensagem" class="form-control" rows="3" 
-                              placeholder="Ex: Olá! Vi que a {empresa} pode precisar de suporte técnico em PMOC ou Laudos de NR-12. Podemos conversar?"></textarea>
-                </div>
-                
-                <div class="row g-3 mb-4">
+                <div class="row mb-3">
                     <div class="col-6">
-                        <label class="label-tech">Qtd. Alvos</label>
+                        <label class="label-tech">Limite</label>
                         <input type="number" id="limite" class="form-control" value="10">
                     </div>
                     <div class="col-6">
@@ -152,62 +56,124 @@
                         <input type="number" id="delay" class="form-control" value="30">
                     </div>
                 </div>
-                
-                <button onclick="buscarContatos()" id="btn-buscar" class="btn btn-eng">INICIAR VARREDURA</button>
+                <button onclick="buscarContatos()" id="btn-buscar" class="btn btn-eng mb-2">
+                    <i class="bi bi-radar me-2"></i>1. BUSCAR NO MAPS
+                </button>
+                <button onclick="dispararMensagens()" id="btn-disparar" class="btn btn-send d-none">
+                    <i class="bi bi-whatsapp me-2"></i>2. DISPARAR SELECIONADOS
+                </button>
             </div>
         </div>
 
-        <div class="col-md-7">
-            <div class="eng-card h-100">
-                <h5 class="text-white mb-4 d-flex justify-content-between align-items-center">
-                    <span><i class="bi bi-broadcast me-2 text-danger"></i> RESULTADOS</span>
-                    <button id="btn-disparar" class="btn btn-success d-none btn-sm px-4">INICIAR DISPAROS</button>
-                </h5>
-                <div class="table-responsive" style="max-height: 350px;">
-                    <table class="table table-dark table-hover m-0">
-                        <thead><tr><th><input type="checkbox" id="select-all" checked class="form-check-input"></th><th>EMPRESA</th><th>CONTATO</th></tr></thead>
-                        <tbody id="tabela-leads"><tr><td colspan="3" class="text-center py-5 text-secondary">Aguardando busca...</td></tr></tbody>
+        <div class="col-md-8">
+            <div class="eng-card">
+                <h5 class="text-white mb-4">TRIAGEM E SELEÇÃO</h5>
+                <div class="table-responsive" style="max-height: 400px;">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="select-all" checked onclick="toggleAll()"></th>
+                                <th>ESTABELECIMENTO</th>
+                                <th>WHATSAPP</th>
+                                <th class="text-end">STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-leads">
+                            <tr><td colspan="4" class="text-center py-4 text-secondary">Aguardando busca...</td></tr>
+                        </tbody>
                     </table>
                 </div>
-                <div id="log-console" class="mt-4">> WF-BOT v3.8: Visual Tech Restaurado.</div>
+                <div id="log-console" class="mt-3">
+                    <div>> Pronto para iniciar.</div>
+                </div>
             </div>
         </div>
     </div>
 
     <footer class="footer-wf">
-        <p>Desenvolvido por: <b>Wagner Fonseca</b></p>
-        <p>Engenheiro Mecânico & Desenvolvedor de Software</p>
-        <p style="font-size: 0.7rem; letter-spacing: 3px;">SUL FLUMINENSE | BRASIL</p>
+        <p>
+            <b>Eng. Wagner Fonseca</b> | Engenheiro Mecânico | Desenvolvedor de Software<br>
+            CREA-RJ 2024116041 | <b>Projetos Mecânicos 3D Hub</b><br>
+            <small>Especialista em PMOC, NR-12 e Automação de Processos em Barra Mansa e Região</small>
+        </p>
     </footer>
 </div>
 
 <script>
-    // DADOS GEOGRÁFICOS DO SUL FLUMINENSE E REGIÃO
-    const cidadesData = {
-        "RJ": ["Barra Mansa, RJ", "Volta Redonda, RJ", "Resende, RJ", "Porto Real, RJ", "Itatiaia, RJ", "Quatis, RJ", "Pinheiral, RJ", "Piraí, RJ", "Angra dos Reis, RJ", "Rio de Janeiro, RJ"],
-        "SP": ["São José dos Campos, SP", "Cruzeiro, SP", "São Paulo, SP"],
-        "MG": ["Passa Vinte, MG", "Itamonte, MG", "Belo Horizonte, MG"],
-        "ES": ["Vitória, ES", "Vila Velha, ES"]
-    };
+    let leadsCache = [];
 
-    function atualizarCidades() {
-        const estado = document.getElementById('estado').value;
-        const cidadeDrop = document.getElementById('localidade');
-        cidadeDrop.innerHTML = '<option value="">Selecione a Cidade...</option>';
-        if (cidadesData[estado]) {
-            cidadesData[estado].forEach(c => {
-                let opt = document.createElement('option');
-                opt.value = c; opt.text = c;
-                cidadeDrop.add(opt);
-            });
-        }
+    function addLog(msg, color='text-light') {
+        const div = document.createElement('div');
+        div.className = color;
+        div.innerHTML = `> ${new Date().toLocaleTimeString()} | ${msg}`;
+        const console = document.getElementById('log-console');
+        console.appendChild(div);
+        console.scrollTop = console.scrollHeight;
     }
 
-    // Inicializa as cidades se o estado já estiver selecionado (ex: RJ)
-    window.onload = atualizarCidades;
+    function toggleAll() {
+        const isChecked = document.getElementById('select-all').checked;
+        document.querySelectorAll('.lead-check').forEach(c => c.checked = isChecked);
+    }
 
     async function buscarContatos() {
-        // Mantenha seu código de fetch aqui...
+        const btn = document.getElementById('btn-buscar');
+        const tbody = document.getElementById('tabela-leads');
+        btn.disabled = true;
+        btn.innerHTML = 'VARRENDO...';
+        tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-warning">Buscando no Maps...</td></tr>';
+        
+        try {
+            const response = await fetch('/buscar', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    nicho: document.getElementById('nicho').value,
+                    localidade: document.getElementById('localidade').value,
+                    limite: document.getElementById('limite').value
+                })
+            });
+            leadsCache = await response.json();
+            tbody.innerHTML = '';
+            leadsCache.forEach((lead, i) => {
+                tbody.innerHTML += `
+                <tr>
+                    <td><input type="checkbox" class="lead-check form-check-input" checked data-index="${i}"></td>
+                    <td class="text-white">${lead.Nome}</td>
+                    <td class="text-warning">${lead.WhatsApp}</td>
+                    <td class="text-end"><span class="badge border border-warning">OK</span></td>
+                </tr>`;
+            });
+            document.getElementById('btn-disparar').classList.remove('d-none');
+            addLog(`${leadsCache.length} leads prontos para seleção.`);
+        } catch (e) { addLog("Erro na busca.", "text-danger"); }
+        btn.disabled = false;
+        btn.innerHTML = '1. BUSCAR NO MAPS';
+    }
+
+    async function dispararMensagens() {
+        const selecionados = [];
+        document.querySelectorAll('.lead-check:checked').forEach(c => {
+            selecionados.push(leadsCache[c.getAttribute('data-index')]);
+        });
+
+        if(selecionados.length === 0) return alert("Marque ao menos uma empresa!");
+
+        addLog(`Iniciando disparos para ${selecionados.length} alvos...`, 'text-warning');
+        try {
+            await fetch('/disparar', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    leads: selecionados,
+                    mensagem: document.getElementById('mensagem').value,
+                    delay: document.getElementById('delay').value
+                })
+            });
+            addLog("Disparos concluídos!", "text-success");
+        } catch (e) {
+            addLog("Erro no processo de disparos.", "text-danger");
+        }
     }
 </script>
 </body>
